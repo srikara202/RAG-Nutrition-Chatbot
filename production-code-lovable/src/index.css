@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Medical-esque fun theme - RAG Nutritional Chatbot */
+
+@layer base {
+  :root {
+    --background: 158 60% 98%;
+    --foreground: 170 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 170 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 170 30% 15%;
+
+    --primary: 158 64% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 58% 92%;
+    --secondary-foreground: 170 30% 20%;
+
+    --muted: 158 30% 94%;
+    --muted-foreground: 170 15% 45%;
+
+    --accent: 173 80% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 158 25% 88%;
+    --input: 158 25% 88%;
+    --ring: 158 64% 40%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for medical theme */
+    --gradient-primary: linear-gradient(135deg, hsl(158 64% 40%), hsl(173 80% 45%));
+    --gradient-hero: linear-gradient(180deg, hsl(158 60% 98%) 0%, hsl(173 58% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(158 30% 98%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(158 40% 30% / 0.12);
+    --shadow-medium: 0 8px 30px -8px hsl(158 40% 30% / 0.18);
+    --shadow-glow: 0 0 40px -10px hsl(158 64% 40% / 0.4);
+    
+    /* Chat specific */
+    --chat-user: 158 64% 40%;
+    --chat-user-foreground: 0 0% 100%;
+    --chat-assistant: 173 58% 94%;
+    --chat-assistant-foreground: 170 30% 15%;
+    
+    /* Citation */
+    --citation-bg: 43 96% 56%;
+    --citation-text: 43 96% 20%;
+
+    --sidebar-background: 158 30% 98%;
+    --sidebar-foreground: 170 30% 25%;
+    --sidebar-primary: 158 64% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 58% 92%;
+    --sidebar-accent-foreground: 170 30% 20%;
+    --sidebar-border: 158 25% 88%;
+    --sidebar-ring: 158 64% 50%;
+  }
+
+  .dark {
+    --background: 170 30% 8%;
+    --foreground: 158 30% 95%;
+
+    --card: 170 25% 12%;
+    --card-foreground: 158 30% 95%;
+
+    --popover: 170 25% 12%;
+    --popover-foreground: 158 30% 95%;
+
+    --primary: 158 64% 50%;
+    --primary-foreground: 170 30% 8%;
+
+    --secondary: 170 25% 18%;
+    --secondary-foreground: 158 30% 90%;
+
+    --muted: 170 20% 18%;
+    --muted-foreground: 158 20% 60%;
+
+    --accent: 173 80% 45%;
+    --accent-foreground: 170 30% 8%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 170 20% 20%;
+    --input: 170 20% 20%;
+    --ring: 158 64% 50%;
+    
+    --chat-user: 158 64% 45%;
+    --chat-user-foreground: 170 30% 8%;
+    --chat-assistant: 170 25% 16%;
+    --chat-assistant-foreground: 158 30% 95%;
+    
+    --sidebar-background: 170 25% 10%;
+    --sidebar-foreground: 158 30% 90%;
+    --sidebar-primary: 158 64% 50%;
+    --sidebar-primary-foreground: 170 30% 8%;
+    --sidebar-accent: 170 20% 18%;
+    --sidebar-accent-foreground: 158 30% 90%;
+    --sidebar-border: 170 20% 18%;
+    --sidebar-ring: 158 64% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Loading dots animation */
+@keyframes bounce-dot {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
+
+.loading-dot {
+  animation: bounce-dot 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+/* Smooth message fade-in */
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-animate {
+  animation: message-in 0.3s ease-out;
+}
+
+/* Pulse animation for citations */
+@keyframes citation-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(43 96% 56% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px hsl(43 96% 56% / 0);
+  }
+}
+
+.citation-badge:hover {
+  animation: citation-pulse 1s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
