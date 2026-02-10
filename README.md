@@ -11,7 +11,7 @@ The core idea is simple:
 * Feed those chunks to an LLM so the answer stays grounded in the PDF
 
 ✅ Live demo: **[https://bio-scribe-assist.lovable.app/](https://bio-scribe-assist.lovable.app/)**
-
+✅ Notebook: LLM_RAG_Nutrition_Pipeline.ipynb (upload and run on google scholar)
 ---
 
 ## What this project does
